@@ -1,59 +1,30 @@
 import axios from 'axios';
+import { OAuth2APIRequest } from './request';
 
-const API_BASE_URL = `http://localhost:8080`;
-
-// Auth
-import { API_BASE_URL, ACCESS_TOKEN } from '../constants';
-
-const request = (options) => {
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-    })
-    
-    // Bearer 토큰 활용법
-    if(localStorage.getItem(ACCESS_TOKEN)) {
-        headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-    }
-
-    const defaults = {headers: headers};
-    options = Object.assign({}, defaults, options);
-
-    return fetch(options.url, options)
-    .then(response => 
-      response.json().then(json => {
-          if(!response.ok) {
-              return Promise.reject(json);
-          }
-          return json;
-      })
-    );
-};
-
-export function getCurrentUser() {
-    if(!localStorage.getItem(ACCESS_TOKEN)) {
-        return Promise.reject("No access token set.");
-    }
-
-    return request({
-        url: API_BASE_URL + "/user/me",
-        method: 'GET'
-    });
+async function getCurrentUser() {
+  const { data } = await OAuth2APIRequest({
+    url: "/user/me",
+    method: 'GET'
+  });
+  return data;
 }
 
-export function login(loginRequest) {
-    return request({
-        url: API_BASE_URL + "/auth/login",
-        method: 'POST',
-        body: JSON.stringify(loginRequest)
-    });
+async function login(loginRequest) {
+  const { data } = await OAuth2APIRequest({
+    url: "/auth/login",
+    method: 'POST',
+    body: JSON.stringify(loginRequest)
+  });
+  return data;
 }
 
-export function signup(signupRequest) {
-    return request({
-        url: API_BASE_URL + "/auth/signup",
-        method: 'POST',
-        body: JSON.stringify(signupRequest)
-    });
+async function signup(signupRequest) {
+  const { data } = await OAuth2APIRequest({
+    url: "/auth/signup",
+    method: 'POST',
+    body: JSON.stringify(signupRequest)
+  });
+  return data;
 }
 
 // User
@@ -62,12 +33,10 @@ const getUsers = async () => {
   return data;
 }
 
-
-
-
-
-
 export default {
+  getCurrentUser,
+  login,
+  signup,
   getUsers
 }
 
