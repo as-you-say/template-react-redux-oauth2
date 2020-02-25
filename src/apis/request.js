@@ -11,5 +11,5 @@ export const OAuth2APIRequest = (options) => {
   }
 
   OAuth2API.authenticate();
-  OAuth2API.instance(options);
+  return OAuth2API.instance(options).then(res => res);
 };

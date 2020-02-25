@@ -1,9 +1,13 @@
+import axios from 'axios';
+import {
+  OAUTH2API_BASE_URL,
+  OAUTH2API_ACCESS_TOKEN
+} from '../constants/_index';
+
 // OAuth2API - 인스턴스
 export const OAuth2API = (function() {
-  const tokenKey = 'accessToken';
-  const url = "http://localhost:8080/";
   const instance = axios.create({
-    baseURL: url,
+    baseURL: OAUTH2API_BASE_URL,
     timeout: 5000,
     headers: {
       'Content-Type': 'application/json'
@@ -11,14 +15,14 @@ export const OAuth2API = (function() {
   });
 
   function authenticate(){
-    const accessToken = localStorage.getItem(tokenKey);
-    if(accessToken) {
-      instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    const token = localStorage.getItem(OAUTH2API_ACCESS_TOKEN);
+    if(token) {
+      instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
   }
 
   function isToken(){
-    if(!localStorage.getItem(tokenKey)){
+    if(!localStorage.getItem(OAUTH2API_ACCESS_TOKEN)){
       return Promise.reject("No access token set.");
     }
   }

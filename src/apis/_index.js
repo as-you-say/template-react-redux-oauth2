@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { OAuth2APIRequest } from './request';
 
 async function getCurrentUser() {
-  const { data } = await OAuth2APIRequest({
+  const data = await OAuth2APIRequest({
     url: "/user/me",
     method: 'GET'
   });
@@ -10,12 +9,13 @@ async function getCurrentUser() {
 }
 
 async function login(loginRequest) {
-  const { data } = await OAuth2APIRequest({
+  const token = await OAuth2APIRequest({
     url: "/auth/login",
     method: 'POST',
     body: JSON.stringify(loginRequest)
   });
-  return data;
+  console.log("token", token);
+  return token;
 }
 
 async function signup(signupRequest) {
@@ -24,19 +24,13 @@ async function signup(signupRequest) {
     method: 'POST',
     body: JSON.stringify(signupRequest)
   });
-  return data;
-}
-
-// User
-const getUsers = async () => {
-  const { data } = await axios.get("http://dev-node-rest-api.herokuapp.com/ingredient?limit=100");
+  console.log();
   return data;
 }
 
 export default {
   getCurrentUser,
   login,
-  signup,
-  getUsers
+  signup
 }
 

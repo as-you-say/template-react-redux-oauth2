@@ -1,11 +1,18 @@
 import {
-  GET_USERS
-} from '../actions/_index'
+  GET_CURRENT_USER,
+  LOGIN
+} from '../actions/_index';
 
-export default function counter(state = [], action) {
+const initialState = {
+  currentUser: {}
+}
+
+export default function(state = initialState, action){
   switch (action.type) {
-    case GET_USERS:
-      return action.payload;
+    case GET_CURRENT_USER:
+      return Object.assign({}, state, {currentUser: action.payload.data});
+    case LOGIN:
+      return state;
     default:
       return state;
   }
