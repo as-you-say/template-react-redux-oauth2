@@ -48,29 +48,27 @@ export default class Login extends Component {
     
   render() {
     return (
-      <div className="login-container">
-        <div className="login-content">
-          <h1 className="login-title">Login to SpringSocial</h1>
+      <div>
+        <div>
+          <h1>Login to SpringSocial</h1>
           <div>
             <a href={GOOGLE_AUTH_URL}>Log in with Google</a>
             <a href={FACEBOOK_AUTH_URL}>Log in with Facebook</a>
             <a href={GITHUB_AUTH_URL}>Log in with Github</a>
           </div>
-          <div className="or-separator">
-            <span className="or-text">OR</span>
+          <div>
+            <span>OR</span>
           </div>
           <form onSubmit={this.handleSubmit}>
-            <input type="email" placeholder="Email" required
-              name="email"
+            <input type="email" placeholder="Email" name="email"
               value={this.state.email} 
               onChange={this.handleInputChange} />
-            <input type="password" placeholder="Password" required
-              name="password"
+            <input type="password" placeholder="Password" name="password"
               value={this.state.password} 
               onChange={this.handleInputChange} />
             <button type="submit">Login</button>
           </form>
-          <span className="signup-link">New user? <Link to="/signup">Sign up!</Link></span>
+          <span>New user? <Link to="/signup">Sign up!</Link></span>
         </div>
       </div>
     );

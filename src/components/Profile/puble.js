@@ -5,7 +5,7 @@ export default function () {
     <div>
       <img src="./profile.jpg" alt="프로필 이미지"/>
       <h2>Name</h2>
-      <p className="profile-email">Email</p>
+      <p>Email</p>
     </div>
   );
 }

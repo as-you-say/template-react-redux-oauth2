@@ -30,30 +30,20 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div className="signup-container">
-        <div className="signup-content">
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-item">
-              <input type="text" name="name" 
-                className="form-control" placeholder="Name"
-                value={this.state.name} onChange={this.handleInputChange} required/>
-            </div>
-            <div className="form-item">
-              <input type="email" name="email" 
-                className="form-control" placeholder="Email"
-                value={this.state.email} onChange={this.handleInputChange} required/>
-            </div>
-            <div className="form-item">
-              <input type="password" name="password" 
-                className="form-control" placeholder="Password"
-                value={this.state.password} onChange={this.handleInputChange} required/>
-            </div>
-            <div className="form-item">
-              <button type="submit" className="btn btn-block btn-primary" >Sign Up</button>
-            </div>
-          </form>     
-          <span className="login-link">Already have an account? <Link to="/login">Login!</Link></span>
-        </div>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="name" placeholder="Name"
+            value={this.state.name} 
+            onChange={this.handleInputChange} />
+          <input type="email" name="email" placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleInputChange} />
+          <input type="password" name="password" placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleInputChange}/>
+          <button type="submit">Sign Up</button>
+        </form>     
+        <span>Already have an account? <Link to="/login">Login!</Link></span>
       </div>
     );
   }

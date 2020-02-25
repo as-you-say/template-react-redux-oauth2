@@ -20,7 +20,7 @@ export default class Profile extends Component {
             ? (<img src={imageUrl} alt={name}/>) 
             : (<span>{name && name[0]}</span>)}
           <h2>{name}</h2>
-          <p className="profile-email">{email}</p>
+          <p>{email}</p>
         </div>
       );
     } else {
