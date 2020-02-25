@@ -30,6 +30,6 @@
 ### 3. 토큰 저장 (localStorage)
 #### 3.1 소셜 토큰
 - URL 파라미터의 token 값을 가져와서 localStorage 에 저장
-- 핸들러 : <Route to="oauth2/redirect" component={OAuth2RedirectHandler}>
+- 핸들러 : &gt;Route to="oauth2/redirect" component={OAuth2RedirectHandler}&lt;
 #### 3.2 로컬 토큰
 - [액션 -> 리듀서] 에서 리턴받은 accessToken 값을 가져와서 localStorage 에 저장
