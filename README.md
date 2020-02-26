@@ -33,3 +33,5 @@
 - 핸들러 : &gt;Route to="oauth2/redirect" component={OAuth2RedirectHandler}&lt;
 #### 3.2 로컬 토큰
 - [액션 -> 리듀서] 에서 리턴받은 accessToken 값을 가져와서 localStorage 에 저장
+
+### 
